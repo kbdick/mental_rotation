@@ -26,18 +26,24 @@ This application is a webapp created in Angular with Bootstrap as a frontend sty
 2. Create a new project with *ng new mentalrotation*. Say Yes to routing, use SCSS as your stylesheet format. Don't use "-" in your project name.
 3. After the project installs, which may take some time, move your files to the root location again if you wish to do so.
 
-## Install and Setup Bootstrap
+## Install and Setup Bootstrap & Font Awesome
 
-1. Install Bootstrap with the node package manager, *npm install bootstrap --save*. The save flag adds it to your package dependency list.
+1. Install Bootstrap with the node package manager, *npm install bootstrap font-awesome --save*. The save flag adds it to your package dependency list.
 
 ## Setup your Development Server
 
 1. Type *npm install* to install your node dependencies from your package.json file.
+3. Preload Bootstrap and Font Awesome to your stylesheet by adding them in the angular.json file. E.g., 
+            "styles": [
+              "src/styles.scss",
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "./node_modules/font-awesome/css/font-awesome.css"
+            ],
 2. On Cloud9, type *ng serve --host 0.0.0.0 --port 8080 --publicHost PROJECT-USER.c9users.io* to serve your project (replace PROJECT with your root folder name, and USER with your username, dash in between). You can add this as an *npm start* script in your package.json file. This may differe slightly depending on your development environment.
-3. 
 
 ## Create New Components, etc.
 
+This project is created with 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build for Production
