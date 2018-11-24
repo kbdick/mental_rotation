@@ -20,13 +20,14 @@ This application is a webapp created in Angular with Bootstrap as a frontend sty
 4. Add your files and commit your first changes to the remote before continuing to set up your project by typing *git add .*, *git commit -m "First commit"*, and then *git push origin master* to push your changes to the remote.
 5. You may want to add your Github credentials to the cache helper so you don't have to type them all the time. *git config --global credential.helper cache*
 
-## Create Angular Project
+## Create a New Angular Project
+If you didn't clone the project, you'll need to create a new Angular project and add dependencies. You can do so below. This project is built in Angular 7.
 
 1. Git may have created a separate project folder in your root for your project. You can either move these files to the root, or navigate there.
 2. Create a new project with *ng new mentalrotation*. Say Yes to routing, use SCSS as your stylesheet format. Don't use "-" in your project name.
 3. After the project installs, which may take some time, move your files to the root location again if you wish to do so.
 
-## Install and Setup Bootstrap & Font Awesome
+## Install and Setup Bootstrap & Font Awesome Dependencies
 
 1. Install Bootstrap with the node package manager, *npm install bootstrap font-awesome --save*. The save flag adds it to your package dependency list.
 
@@ -39,12 +40,13 @@ This application is a webapp created in Angular with Bootstrap as a frontend sty
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/font-awesome/css/font-awesome.css"
             ],
-2. On Cloud9, type *ng serve --host 0.0.0.0 --port 8080 --publicHost PROJECT-USER.c9users.io* to serve your project (replace PROJECT with your root folder name, and USER with your username, dash in between). You can add this as an *npm start* script in your package.json file. This may differe slightly depending on your development environment.
+2. On Cloud9, type *ng serve --host 0.0.0.0 --port 8080 --publicHost PROJECT-USER.c9users.io* to serve your project (replace PROJECT with your root folder name, and USER with your username, dash in between). You can add this as an *npm start* script in your package.json file. This may differ slightly depending on your development environment.
 
 ## Create New Components, etc.
 
-This project is created with 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This project is created with a basic UI module with a header that includes a bootstrap nav as well as a simple footer. Feel free to add components for different functionality. 
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module` for differen Angular functionality.
 
 ## Build for Production
 
@@ -53,4 +55,30 @@ Run `ng build` to build the project, or, if hosting on Github, *ng build --prod 
 ## Host on Github Pages
 
 This requires installing the angular-cli-pages library locally. Here is a good tutorial for that: https://alligator.io/angular/deploying-angular-app-github-pages/
-Follow the instructions for your build above, then deploy with 'npx ngh'.
+Follow the instructions for your build above, then deploy with *npx ngh*.
+
+## Use Cloud Firestore as a Backend
+
+Google's Cloud Firestore provides a good backend-as-a-service option to host data. I would use it in lieu of their Realtime Database, as the queries are easier to construct. It is encrypted at rest and in transit, and is fairly easy to set up.
+
+1. Create a Cloud Firestore database in https://console.firebase.google.com. This will give you credentials.
+2. Install Cloud Firestore dependencies. Follow the tutorial at https://github.com/angular/angularfire2. Make sure they are in your package.json file by using the --save flag. 
+3. You'll need to import both the AngularFirestore and RXJS dependencies. I recommend creating a data service instead of importing these into each component.
+4. Add your Firestore keys to your environment object in the environment files in the src/environments folder. Make sure you add this folder to your .gitignore if you intend to publish your repository. 
+Your final object should look like this and you can use it in both production and development:
+
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: "KEY",
+    authDomain: "PROJEDCT.firebaseapp.com",
+    databaseURL: "https://PROJECT.firebaseio.com",
+    projectId: "PROJECT",
+    storageBucket: "PROJECT.appspot.com",
+    messagingSenderId: "NUMBER"
+  }
+};  
+
+5. Follow this tutorial for authentication if you wish to add it. https://angularfirebase.com/lessons/google-user-auth-with-firestore-custom-data/
+
+
