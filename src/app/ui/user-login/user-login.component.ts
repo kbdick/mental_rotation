@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { AuthService } from '../../core/auth.service';
 
 @Component({
@@ -15,8 +16,23 @@ export class UserLoginComponent {
 
   /// Social Login
 
+  async signInWithGithub() {
+    await this.auth.githubLogin();
+    return await this.afterSignIn();
+  }
+
   async signInWithGoogle() {
     await this.auth.googleLogin();
+    return await this.afterSignIn();
+  }
+
+  async signInWithFacebook() {
+    await this.auth.facebookLogin();
+    await this.afterSignIn();
+  }
+
+  async signInWithTwitter() {
+    await this.auth.twitterLogin();
     return await this.afterSignIn();
   }
 

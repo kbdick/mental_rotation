@@ -1,7 +1,7 @@
 <form [formGroup]="userForm" *ngIf="newUser" (ngSubmit)="signup()">
 
     <h3>New User Signup</h3>
-    <p class="button is-small" (click)="toggleForm()">Already Registered?</p>
+    <p (click)="toggleForm()">Already Registered?</p>
     <hr>
 
     <label for="email">Email</label>

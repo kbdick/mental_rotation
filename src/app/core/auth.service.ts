@@ -37,9 +37,9 @@ export class AuthService {
         } else {
           return of(null);
         }
-      })
-      // tap(user => localStorage.setItem('user', JSON.stringify(user))),
-      // startWith(JSON.parse(localStorage.getItem('user')))
+      }),
+      tap(user => localStorage.setItem('user', JSON.stringify(user))),
+      startWith(JSON.parse(localStorage.getItem('user')))
     );
   }
 
@@ -47,6 +47,21 @@ export class AuthService {
 
   googleLogin() {
     const provider = new auth.GoogleAuthProvider();
+    return this.oAuthLogin(provider);
+  }
+
+  githubLogin() {
+    const provider = new auth.GithubAuthProvider();
+    return this.oAuthLogin(provider);
+  }
+
+  facebookLogin() {
+    const provider = new auth.FacebookAuthProvider();
+    return this.oAuthLogin(provider);
+  }
+
+  twitterLogin() {
+    const provider = new auth.TwitterAuthProvider();
     return this.oAuthLogin(provider);
   }
 
