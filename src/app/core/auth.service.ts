@@ -50,21 +50,6 @@ export class AuthService {
     return this.oAuthLogin(provider);
   }
 
-  githubLogin() {
-    const provider = new auth.GithubAuthProvider();
-    return this.oAuthLogin(provider);
-  }
-
-  facebookLogin() {
-    const provider = new auth.FacebookAuthProvider();
-    return this.oAuthLogin(provider);
-  }
-
-  twitterLogin() {
-    const provider = new auth.TwitterAuthProvider();
-    return this.oAuthLogin(provider);
-  }
-
   private oAuthLogin(provider: any) {
     return this.afAuth.auth
       .signInWithPopup(provider)

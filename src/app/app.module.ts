@@ -3,46 +3,43 @@ import {
   BrowserTransferStateModule
 } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AppRoutingModule, routes } from './app-routing.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { environment } from '../environments/environment';
 export const firebase = environment.firebase;
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { CoreModule } from './core/core.module';
-import { RouterModule } from '@angular/router';
 import { UiModule } from './ui/ui.module';
 
-import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthGuard } from './core/auth.guard';
 import { AuthService } from './core/auth.service';
-import { UserProfileComponent } from './ui/user-profile/user-profile.component';
-import { UserLoginComponent } from './ui/user-login/user-login.component';
-import { UserFormComponent } from './ui/user-form/user-form.component';
+import { AuthGuard } from './core/auth.guard';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UserProfileComponent,
-    UserLoginComponent,
-    UserFormComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserTransferStateModule,
     CoreModule,
     AppRoutingModule,
     UiModule,
-    FormsModule,
-    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase, 'Mental Rotation'),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    AngularFireFunctionsModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {
+      enabled: environment.production
+    })
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
