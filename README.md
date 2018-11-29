@@ -8,7 +8,7 @@ This README is intended to allow someone with limited software development skill
 
 This application is a webapp created in Angular with Bootstrap as a frontend style template. Before building the applicatino, we need to set up our development environment.
 
-1. Cloud9/AWS has a good integrated development environment. We'll add serve and build commands with that in mind, but your local environment may have different requirements.
+1. Cloud9/AWS has a good integrated development environment. Here's a tutorial: You can use AWS Cloud9 by following this tutorial for setting up Angular in Cloud9, or follow below: https://medium.com/@Idan_Co/how-to-build-a-development-environment-for-angular-with-aws-cloud9-483a13270586. We'll add serve and build commands with that in mind, but your local environment may have different requirements.
 2. You'll need to install Nodejs as a server at https://nodejs.org/en/download/, or update it with the node version manager by typing *nvm install stable*. Use this version as your default for new terminals with *nvm alias default 11.2.0* with the version number you're using.
 3. Now install the Angular CLI with the node package manager by typing *npm install -g @angular/cli* 
 
@@ -62,7 +62,7 @@ Follow the instructions for your build above, then deploy with *npx ngh*.
 Google's Cloud Firestore provides a good backend-as-a-service option to host data. I would use it in lieu of their Realtime Database, as the queries are easier to construct. It is encrypted at rest and in transit, and is fairly easy to set up.
 
 1. Create a Cloud Firestore database in https://console.firebase.google.com. This will give you credentials.
-2. Install Cloud Firestore dependencies. Follow the tutorial at https://github.com/angular/angularfire2. Make sure they are in your package.json file by using the --save flag. 
+2. Install Cloud Firestore dependencies (they're part of the package.json file). Or follow the tutorial at https://github.com/angular/angularfire2. Make sure they are in your package.json file by using the --save flag. 
 3. You'll need to import both the AngularFirestore and RXJS dependencies. I recommend creating a data service instead of importing these into each component.
 4. Add your Firestore keys to your environment object in the environment files in the src/environments folder. Make sure you add this folder to your .gitignore if you intend to publish your repository. 
 Your final object should look like this and you can use it in both production and development:
@@ -79,6 +79,6 @@ export const environment = {
   }
 };  
 
-5. Follow this tutorial for authentication if you wish to add it. https://angularfirebase.com/lessons/google-user-auth-with-firestore-custom-data/
-
+5. Follow this tutorial for authentication if you wish to add it to your projects (it's part of this repo). https://angularfirebase.com/lessons/google-user-auth-with-firestore-custom-data/
+6. If you use OAUTH2 authentication, you will need to add your development and production domain to the Authorized Domains under the Authentication menu. Google is easy to use with Firestore, and it's the one I'm using. The tutorial will show you the rest.
 

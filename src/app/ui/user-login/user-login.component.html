@@ -1,12 +1,8 @@
-<h1>Firebase User Auth Demo</h1>
+<h2>Mental Rotation User Login</h2>
 
-<p>
-  Learn more about 
-  <a href="https://angularfirebase.com/tag/authentication">Firebase auth strategies</a>.
-</p>
 <hr>
-
-<div *ngIf="!(auth.user | async); else alreadyLoggedIn">
+<div class="row">
+  <div class="col-md-8" *ngIf="!(auth.user | async); else alreadyLoggedIn">
 
   <h3>Social Login</h3>
 
@@ -37,11 +33,12 @@
     <hr>
 
     <user-form></user-form>
-
+  </div>
 </div>
 
 <ng-template #alreadyLoggedIn>
   <p class="text-success">
-    You are logged in <i class="fa fa-thumbs-up"></i>
+    You are logged in <i class="fa fa-thumbs-up"></i>.
   </p>
+  <p>Feel free to start testing.</p>
 </ng-template>

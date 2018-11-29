@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 import { AuthService } from '../../core/auth.service';
 
 type UserFields = 'email' | 'password';
@@ -27,8 +28,8 @@ export class UserFormComponent implements OnInit {
     'password': {
       'required': 'Password is required.',
       'pattern': 'Password must be include at one letter and one number.',
-      'minlength': 'Password must be at least 4 characters long.',
-      'maxlength': 'Password cannot be more than 40 characters long.',
+      'minlength': 'Password must be at least 12 characters long. I suggest a four word phrase you can remember plus a hard to guess date.',
+      'maxlength': 'Password cannot be more than 40 characters long. This is not the Pentagon',
     },
   };
 
@@ -63,8 +64,8 @@ export class UserFormComponent implements OnInit {
       ]],
       'password': ['', [
         Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-        Validators.minLength(6),
-        Validators.maxLength(25),
+        Validators.minLength(12),
+        Validators.maxLength(40),
       ]],
     });
 

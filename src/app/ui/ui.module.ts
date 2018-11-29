@@ -11,6 +11,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { NotificationMessageComponent } from './notification-message/notification-message.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NotificationMessageComponent } from './notification-message/notificatio
     LayoutComponent, 
     FooterComponent, 
     LoadingSpinnerComponent, 
-    NotificationMessageComponent],
+    NotificationMessageComponent, 
+    AboutComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -34,6 +36,7 @@ import { NotificationMessageComponent } from './notification-message/notificatio
     LoadingSpinnerComponent,
     NotificationMessageComponent,
     UserProfileComponent,
-    UserFormComponent]
+    UserFormComponent,
+    AboutComponent]
 })
 export class UiModule { }

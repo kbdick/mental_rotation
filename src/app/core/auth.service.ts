@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { firebase } from '@firebase/app';
+import * as firebase from 'firebase/app';
 import { auth } from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
@@ -46,22 +46,22 @@ export class AuthService {
   ////// OAuth Methods /////
 
   googleLogin() {
-    const provider = new auth.GoogleAuthProvider();
+    const provider = new firebase.auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
   }
 
   githubLogin() {
-    const provider = new auth.GithubAuthProvider();
+    const provider = new firebase.auth.GithubAuthProvider();
     return this.oAuthLogin(provider);
   }
 
   facebookLogin() {
-    const provider = new auth.FacebookAuthProvider();
+    const provider = new firebase.auth.FacebookAuthProvider();
     return this.oAuthLogin(provider);
   }
 
   twitterLogin() {
-    const provider = new auth.TwitterAuthProvider();
+    const provider = new firebase.auth.TwitterAuthProvider();
     return this.oAuthLogin(provider);
   }
 
@@ -69,7 +69,7 @@ export class AuthService {
     return this.afAuth.auth
       .signInWithPopup(provider)
       .then(credential => {
-        this.notify.update('Welcome to Firestarter!!!', 'success');
+        this.notify.update('Welcome to the Mental Rotation app', 'success');
         return this.updateUserData(credential.user);
       })
       .catch(error => this.handleError(error));
@@ -81,7 +81,7 @@ export class AuthService {
     return this.afAuth.auth
       .signInAnonymously()
       .then(credential => {
-        this.notify.update('Welcome to Firestarter!!!', 'success');
+        this.notify.update('Welcome to the Mental Rotation app', 'success');
         return this.updateUserData(credential.user); // if using firestore
       })
       .catch(error => {
@@ -113,7 +113,7 @@ export class AuthService {
 
   // Sends email allowing user to reset password
   resetPassword(email: string) {
-    const fbAuth = auth();
+    const fbAuth = firebase.auth();
 
     return fbAuth
       .sendPasswordResetEmail(email)
@@ -142,8 +142,8 @@ export class AuthService {
     const data: User = {
       uid: user.uid,
       email: user.email || null,
-      displayName: user.displayName || 'nameless user',
-      photoURL: user.photoURL || 'https://goo.gl/Fz9nrQ'
+      displayName: user.displayName || 'Guest User',
+      photoURL: user.photoURL || 'https://en.wikipedia.org/wiki/Jean_Piaget#/media/File:Jean_Piaget.jpg'
     };
     return userRef.set(data);
   }
