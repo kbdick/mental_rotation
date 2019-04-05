@@ -16,6 +16,7 @@ import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { CoreModule } from './core/core.module';
+import { MaterialModule } from './material/material.module';
 import { UiModule } from './ui/ui.module';
 
 import { AppComponent } from './app.component';
@@ -29,6 +30,7 @@ import { AuthGuard } from './core/auth.guard';
     BrowserTransferStateModule,
     CoreModule,
     AppRoutingModule,
+    MaterialModule,
     UiModule,
     AngularFireModule.initializeApp(environment.firebase, 'Mental Rotation'),
     AngularFirestoreModule,

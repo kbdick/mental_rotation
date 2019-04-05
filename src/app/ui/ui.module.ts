@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { NotificationMessageComponent } from './notification-message/notification-message.component';
 import { AboutComponent } from './about/about.component';
+import { MentalRotationComponent } from '../tests/mental-rotation/mental-rotation.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { AboutComponent } from './about/about.component';
     FooterComponent, 
     LoadingSpinnerComponent, 
     NotificationMessageComponent, 
-    AboutComponent],
+    AboutComponent, MentalRotationComponent],
   imports: [
     CommonModule,
     RouterModule,
